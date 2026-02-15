@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { COMPANY_NAME, TAGLINE } from '../constants';
+import BrandLogo from '../assets/Logos/ICON_2.png';
 
 const Preloader: React.FC = () => {
   return (
@@ -17,36 +18,35 @@ const Preloader: React.FC = () => {
           transition={{ duration: 1, ease: "easeOut" }}
           className="mb-8"
         >
-           {/* Assuming logo.png is available in public folder as per previous context */}
-           <img src="/logo.png" alt="TRADA Logo" className="w-24 md:w-32 h-auto object-contain" />
+          <img src={BrandLogo} alt="TRADA Logo" className="w-24 md:w-32 h-auto object-contain" />
         </motion.div>
 
-        <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-2xl md:text-3xl font-display font-bold text-trada-dark dark:text-white tracking-tight mb-2"
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="text-2xl md:text-3xl font-display font-bold text-trada-dark dark:text-white tracking-tight mb-2"
         >
-            {COMPANY_NAME}
+          {COMPANY_NAME}
         </motion.h1>
 
         <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="text-sm md:text-base text-slate-500 dark:text-slate-400 font-light tracking-widest uppercase"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          className="text-sm md:text-base text-slate-500 dark:text-slate-400 font-light tracking-widest uppercase"
         >
-            {TAGLINE}
+          {TAGLINE}
         </motion.p>
       </div>
-      
+
       {/* Loading Bar */}
       <div className="absolute bottom-20 w-64 h-1 bg-slate-100 dark:bg-white/5 rounded-full overflow-hidden">
         <motion.div
-            initial={{ width: 0, x: "-100%" }}
-            animate={{ width: "100%", x: "0%" }}
-            transition={{ duration: 2, ease: "easeInOut" }}
-            className="h-full bg-gradient-to-r from-trada-secondary to-trada-accent"
+          initial={{ width: 0, x: "-100%" }}
+          animate={{ width: "100%", x: "0%" }}
+          transition={{ duration: 2, ease: "easeInOut" }}
+          className="h-full bg-gradient-to-r from-trada-secondary to-trada-accent"
         />
       </div>
     </motion.div>

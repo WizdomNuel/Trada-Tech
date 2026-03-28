@@ -54,7 +54,7 @@ export const CONSULTING_SERVICES: ServiceOption[] = [
 export const PROCESS_STEPS: ProcessStep[] = [
   {
     id: 1,
-    title: "Diagnostic Audit",
+    title: "Operational Systems Audit",
     description: "We don't start with code. We start with your reality. We map your current workflows, identify bottlenecks, and understand the human context of your operations.",
     icon: "Search"
   },
@@ -66,7 +66,7 @@ export const PROCESS_STEPS: ProcessStep[] = [
   },
   {
     id: 3,
-    title: "Agile Development",
+    title: "Iterative System Implementation",
     description: "We build your solution in iterative sprints. You get visibility early and often, ensuring the final product matches your evolving needs, not just the initial spec.",
     icon: "Code2"
   },
@@ -328,7 +328,7 @@ export const SOLUTIONS: SolutionPillar[] = [
 
 export const CONTACT_INFO = {
   founder: "Ben-Anthony Ifechukwu N.O.",
-  email: "tradalimited@gmail.com",
+  email: "info@trada.ng",
   phone: "+234 707 289 8618",
   location: "Nigeria"
 };

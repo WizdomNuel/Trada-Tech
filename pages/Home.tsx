@@ -51,9 +51,9 @@ const Home: React.FC = () => {
           
           <div className="mb-6 sm:mb-8">
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-bold leading-[0.9] tracking-tight text-trada-dark dark:text-white">
-              <RevealText text="Work Better." delay={0.2} tag="span" className="block mb-2" />
+              <RevealText text="Structure Systems." delay={0.2} tag="span" className="block mb-2" />
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-trada-secondary to-trada-accent dark:from-trada-primary dark:to-teal-200 pb-2">
-                 <RevealText text="Grow Faster." delay={0.4} tag="span" />
+                 <RevealText text="Integrate Operations. Enable Growth." delay={0.4} tag="span" />
               </span>
             </h1>
           </div>
@@ -107,7 +107,7 @@ const Home: React.FC = () => {
                 Across Nigeria and Africa, people work incredibly hard. Traders record sales in notebooks, manufacturers track inventory on WhatsApp, and regulators struggle with scattered data.
               </p>
               <p className="mb-4">
-                Opportunities are missed not because of a lack of ability, but because the systems around them do not speak to each other. Information lives in silos, making decision-making slow and scalability impossible.
+                Opportunities are missed not because of a lack of ability, but because the systems around them do not speak to each other. Information lives in silos, making decision-making slow and scaling difficult.
               </p>
               <p className="font-semibold text-trada-secondary dark:text-trada-primary text-xl mt-6">
                 This gap creates friction. It reduces trust. It slows growth.
@@ -119,7 +119,7 @@ const Home: React.FC = () => {
             {[
               { icon: Activity, title: "Disconnected Tools", desc: "Fragmentation kills efficiency. When your finance software doesn't talk to your inventory, you lose money." },
               { icon: ShieldCheck, title: "Trust Deficit", desc: "Without verifiable data, it's hard to prove legitimacy to investors, banks, or international partners." },
-              { icon: Zap, title: "Manual Processes", desc: "Human error is inevitable in manual entry. Automation frees your team for high-value work." },
+              { icon: Zap, title: "Unstructured Operations", desc: "Human error is inevitable in manual entry. Automation frees your team for high-value work." },
             ].map((item, idx) => (
               <StaggerItem key={idx} className={`${idx === 2 ? 'sm:col-span-2' : ''}`}>
                 <motion.div 
@@ -145,18 +145,20 @@ const Home: React.FC = () => {
           <div className="max-w-3xl mx-auto text-center mb-16 sm:mb-20 relative z-10">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold mb-6">TRADA was created to solve this quiet but costly problem.</h2>
             <p className="text-slate-400 text-lg md:text-xl font-light">
-              Instead of building "another app," we focus on integration. Connecting tools, records, and processes into simple, trusted digital systems.
+              Instead of building "another app," we focus on integration. Connecting tools, records, and workflows into clear, trusted operational systems.
             </p>
           </div>
         </FadeIn>
 
-        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 relative z-10">
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 relative z-10">
           {[
-            { title: "Clarify", desc: "We optimize processes before adding technology. We strip away the noise to find the signal in your operations." },
-            { title: "Connect", desc: "We bridge fragmented tools into unified systems. APIs, middleware, and smart integrations are our specialty." },
-            { title: "Scale", desc: "Data-driven growth for sustainable expansion. Once the foundation is solid, we help you step on the gas." }
+            { title: "Structure", desc: "We map how work actually happens and organize it into clear operational systems." },
+            { title: "Integrate", desc: "We connect the tools, data, and processes your business already relies on." },
+            { title: "Automate", desc: "Once systems are structured, automation removes manual friction." },
+            { title: "Analyze", desc: "Reliable data provides visibility and decision-making support." },
+            { title: "Scale", desc: "With strong systems in place, growth becomes sustainable and predictable." }
           ].map((item, idx) => (
-            <StaggerItem key={idx} className={idx === 2 ? "sm:col-span-2 md:col-span-1" : ""}>
+            <StaggerItem key={idx} className={idx === 3 || idx === 4 ? "lg:col-span-1" : ""}>
               <motion.div 
                 whileHover={{ scale: 1.02 }}
                 className="h-full p-8 sm:p-10 rounded-3xl bg-slate-800/50 dark:bg-black/20 border border-slate-700/50 hover:border-trada-primary/50 transition-colors group backdrop-blur-sm"
@@ -170,6 +172,21 @@ const Home: React.FC = () => {
             </StaggerItem>
           ))}
         </StaggerContainer>
+      </Section>
+
+      {/* Our Belief / Manifesto */}
+      <Section className="bg-slate-50 dark:bg-[#1a1818] transition-colors duration-700">
+        <div className="max-w-4xl mx-auto text-center">
+          <FadeIn>
+            <h2 className="text-sm font-bold tracking-widest text-trada-secondary dark:text-trada-primary uppercase mb-8">Our Belief</h2>
+            <div className="text-2xl sm:text-3xl md:text-4xl font-display font-light leading-relaxed text-trada-dark dark:text-white">
+              <p className="mb-4">Before automation, there must be structure.</p>
+              <p className="mb-4">Before scale, there must be trust.</p>
+              <p className="mb-4 text-slate-500 dark:text-slate-400">Technology alone does not solve fragmented systems.<br/>Clear processes and connected data do.</p>
+              <p className="mt-8 text-xl font-medium text-trada-secondary dark:text-trada-primary">TRADA exists to bring structure, integration, and credibility to how businesses operate.</p>
+            </div>
+          </FadeIn>
+        </div>
       </Section>
 
       {/* Process Section */}
@@ -224,7 +241,7 @@ const Home: React.FC = () => {
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
            {[
              { title: "The Production Pivot", metric: "22% Cost Savings", type: "Manufacturing" },
-             { title: "Digitizing Institutional Trust", metric: "1.5k+ Members Verified", type: "Trade & Commerce" },
+             { title: "Digitizing Institutional Trust", metric: "1.5k+ Members Verified", type: "Institutional Ecosystem" },
              { title: "Retail Without Leaks", metric: "2 New Branches", type: "Retail Expansion" }
            ].map((story, i) => (
              <StaggerItem key={i}>

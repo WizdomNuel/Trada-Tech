@@ -107,17 +107,22 @@ const Contact: React.FC = () => {
           {/* Form Area */}
           <FadeIn delay={0.2} className="lg:col-span-2">
             <div className="bg-white dark:bg-[#1a1818] p-6 sm:p-10 md:p-12 rounded-[2rem] shadow-xl border border-slate-100 dark:border-white/10 min-h-full">
-              <form onSubmit={(e) => e.preventDefault()}>
+              <form action={`https://formsubmit.co/${CONTACT_INFO.email}`} method="POST">
+                <input type="hidden" name="_subject" value={`New ${formType === 'booking' ? 'Booking Request' : 'Inquiry'} from TRADA Website`} />
+                <input type="hidden" name="form_type" value={formType} />
+                {formType === 'booking' && (
+                  <input type="hidden" name="selected_services" value={selectedServices.map(id => CONSULTING_SERVICES.find(s => s.id === id)?.label).join(', ')} />
+                )}
                 <StaggerContainer className="space-y-6 sm:space-y-8">
                     {/* Common Fields */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                       <StaggerItem className="space-y-2 group">
                         <label className="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">Full Name</label>
-                        <input type="text" className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-xl border-2 border-slate-100 dark:border-white/5 bg-slate-50 dark:bg-black/20 dark:text-white focus:border-trada-secondary dark:focus:border-trada-secondary focus:bg-white dark:focus:bg-black/40 outline-none transition-all duration-300 placeholder:text-slate-400" placeholder="John Doe" />
+                        <input type="text" name="name" required className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-xl border-2 border-slate-100 dark:border-white/5 bg-slate-50 dark:bg-black/20 dark:text-white focus:border-trada-secondary dark:focus:border-trada-secondary focus:bg-white dark:focus:bg-black/40 outline-none transition-all duration-300 placeholder:text-slate-400" placeholder="John Doe" />
                       </StaggerItem>
                       <StaggerItem className="space-y-2 group">
                         <label className="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">Email Address</label>
-                        <input type="email" className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-xl border-2 border-slate-100 dark:border-white/5 bg-slate-50 dark:bg-black/20 dark:text-white focus:border-trada-secondary dark:focus:border-trada-secondary focus:bg-white dark:focus:bg-black/40 outline-none transition-all duration-300 placeholder:text-slate-400" placeholder="john@company.com" />
+                        <input type="email" name="email" required className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-xl border-2 border-slate-100 dark:border-white/5 bg-slate-50 dark:bg-black/20 dark:text-white focus:border-trada-secondary dark:focus:border-trada-secondary focus:bg-white dark:focus:bg-black/40 outline-none transition-all duration-300 placeholder:text-slate-400" placeholder="john@company.com" />
                       </StaggerItem>
                     </div>
 
@@ -157,7 +162,7 @@ const Contact: React.FC = () => {
                            <div className="space-y-2 group">
                               <label className="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">Preferred Consultation Date</label>
                               <div className="relative">
-                                <input type="date" className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-xl border-2 border-slate-100 dark:border-white/5 bg-slate-50 dark:bg-black/20 dark:text-white focus:border-trada-secondary dark:focus:border-trada-secondary focus:bg-white dark:focus:bg-black/40 outline-none transition-all duration-300 text-slate-600 dark:text-slate-300" />
+                                <input type="date" name="date" required={formType === 'booking'} className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-xl border-2 border-slate-100 dark:border-white/5 bg-slate-50 dark:bg-black/20 dark:text-white focus:border-trada-secondary dark:focus:border-trada-secondary focus:bg-white dark:focus:bg-black/40 outline-none transition-all duration-300 text-slate-600 dark:text-slate-300" />
                                 <Calendar className="absolute right-6 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" size={20} />
                               </div>
                            </div>
@@ -169,7 +174,7 @@ const Contact: React.FC = () => {
                       <StaggerItem className="space-y-2 group">
                         <label className="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">Subject</label>
                         <div className="relative">
-                          <select className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-xl border-2 border-slate-100 dark:border-white/5 bg-slate-50 dark:bg-black/20 dark:text-white focus:border-trada-secondary dark:focus:border-trada-secondary focus:bg-white dark:focus:bg-black/40 outline-none transition-all duration-300 appearance-none cursor-pointer">
+                          <select name="inquiry_subject" className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-xl border-2 border-slate-100 dark:border-white/5 bg-slate-50 dark:bg-black/20 dark:text-white focus:border-trada-secondary dark:focus:border-trada-secondary focus:bg-white dark:focus:bg-black/40 outline-none transition-all duration-300 appearance-none cursor-pointer">
                               <option>General Inquiry</option>
                               <option>Partnership Proposal</option>
                               <option>Media & Press</option>
@@ -188,11 +193,12 @@ const Contact: React.FC = () => {
                       <label className="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">
                         {formType === 'booking' ? 'Additional Details / Specific Requirements' : 'Message'}
                       </label>
-                      <textarea rows={4} className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-xl border-2 border-slate-100 dark:border-white/5 bg-slate-50 dark:bg-black/20 dark:text-white focus:border-trada-secondary dark:focus:border-trada-secondary focus:bg-white dark:focus:bg-black/40 outline-none transition-all duration-300 placeholder:text-slate-400 resize-none" placeholder={formType === 'booking' ? "Tell us a bit about your organization and current challenges..." : "How can we help you?"}></textarea>
+                      <textarea name="message" required rows={4} className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-xl border-2 border-slate-100 dark:border-white/5 bg-slate-50 dark:bg-black/20 dark:text-white focus:border-trada-secondary dark:focus:border-trada-secondary focus:bg-white dark:focus:bg-black/40 outline-none transition-all duration-300 placeholder:text-slate-400 resize-none" placeholder={formType === 'booking' ? "Tell us a bit about your organization and current challenges..." : "How can we help you?"}></textarea>
                     </StaggerItem>
 
                     <StaggerItem>
                         <motion.button 
+                          type="submit"
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
                           className="w-full sm:w-auto px-10 py-5 bg-trada-secondary text-white dark:bg-white dark:text-trada-dark font-bold rounded-full hover:bg-trada-accent dark:hover:bg-slate-200 transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3 text-lg"
